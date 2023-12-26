@@ -85,7 +85,7 @@ func equalBookworms(bookworms, target []Bookworm) bool {
 
 func equalBooks(books, target []Book) bool {
 	//compare length
-	if len(books) != len(target) {
+	if len(books) != len(target)) {
 		return false
 	}
 
