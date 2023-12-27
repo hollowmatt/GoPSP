@@ -12,7 +12,7 @@ func main() {
 	}
 	fmt.Println((bookworms))
 
-	books := bookCount(bookworms)
+	books := booksCount(bookworms)
 	fmt.Println((books))
 
 }

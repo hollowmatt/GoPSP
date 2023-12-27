@@ -83,15 +83,70 @@ func equalBookworms(bookworms, target []Bookworm) bool {
 	return true
 }
 
+// compare two lists of books to see if they match
 func equalBooks(books, target []Book) bool {
 	//compare length
-	if len(books) != len(target)) {
+	if len(books) != len(target) {
 		return false
 	}
 
 	//iterate and compare
 	for i := range books {
 		if (books[i].Author != target[i].Author) && (books[i].Title != target[i].Title) {
+			return false
+		}
+	}
+
+	return true
+}
+
+// Testing the book comparison
+func TestBooksCount(t *testing.T) {
+	testCase := map[string]struct {
+		input []Bookworm
+		want  map[Book]uint
+	}{
+		"base case (normal)": {
+			input: []Bookworm{
+				{Name: "Sheila", Books: []Book{jetBlackHeart, paperWhite, traffic}},
+				{Name: "Matt", Books: []Book{soul, jetBlackHeart, traffic}},
+			},
+			want: map[Book]uint{jetBlackHeart: 2, paperWhite: 1, traffic: 2, soul: 1},
+		},
+		"no bookworms": {
+			input: []Bookworm{},
+			want:  map[Book]uint{},
+		},
+		"bookworm with no books": {
+			input: []Bookworm{
+				{Name: "Sheila", Books: []Book{jetBlackHeart, paperWhite, traffic}},
+				{Name: "Matt", Books: []Book{}},
+			},
+			want: map[Book]uint{jetBlackHeart: 1, paperWhite: 1, traffic: 1},
+		},
+	}
+
+	for name, tc := range testCase {
+		t.Run(name, func(t *testing.T) {
+			got := booksCount(tc.input)
+			if !equalBooksCount(t, got, tc.want) {
+				t.Fatalf("got a different list of books: %v, expected %v", got, tc.want)
+			}
+		})
+	}
+}
+
+// compare two book counts, see if they match
+func equalBooksCount(t *testing.T, got, want map[Book]uint) bool {
+	t.Helper()
+	// if lengths don't match, it is an immediate fail
+	if len(got) != len(want) {
+		return false
+	}
+
+	for book, targetCount := range want {
+		count, ok := got[book]
+		if !ok || targetCount != count {
 			return false
 		}
 	}
