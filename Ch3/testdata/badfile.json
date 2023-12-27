@@ -1,0 +1,36 @@
+[
+  {
+    "name": "Sheila",
+    "books": [
+      {
+        "author": "Robert Gailbraith",
+        "title": "Jet Black Heart"
+      },
+      {
+        "author": "Robert Gailbraith",
+        "title": "Paper White"
+      },
+      {
+        "author": "Tom Vanderbilt",
+        "title": "Traffic: Why we drive the way we do"
+      }
+    ]
+  },
+  {
+    "name": "Matt",
+    "books": [
+      {
+        "author": "Tracy Kidder",
+        "title": "Soul of the new Machine"
+      },
+      {
+        "author": "Robert Gailbraith",
+        "title":"Jet Black Heart"
+      },
+      {
+        "author":"Tom Vanderbilt",
+        "title": "Traffic: Why we drive the way we do"
+      }
+    ]
+
+]
