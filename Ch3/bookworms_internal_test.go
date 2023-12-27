@@ -153,3 +153,34 @@ func equalBooksCount(t *testing.T, got, want map[Book]uint) bool {
 
 	return true
 }
+
+func TestFindCommonBooks(t *testing.T) {
+	testCase := map[string]struct {
+		input []Bookworm
+		want  []Book
+	}{
+		"no common book": {
+			input: []Bookworm{
+				{Name: "Sheila", Books: []Book{jetBlackHeart, paperWhite, traffic}},
+				{Name: "Matt", Books: []Book{soul}},
+			},
+			want: nil,
+		},
+		"one common book": {
+			input: []Bookworm{
+				{Name: "Sheila", Books: []Book{jetBlackHeart, paperWhite, traffic}},
+				{Name: "Matt", Books: []Book{soul, jetBlackHeart}},
+			},
+			want: []Book{jetBlackHeart},
+		},
+	}
+
+	for name, test := range testCase {
+		t.Run(name, func(t *testing.T) {
+			got := findCommonBooks(test.input)
+			if !equalBooks(test.want, got) {
+				t.Fatalf("got a different list of books: %v, expected %v", got, test.want)
+			}
+		})
+	}
+}
