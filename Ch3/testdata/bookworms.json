@@ -13,6 +13,10 @@
       {
         "author": "Tom Vanderbilt",
         "title": "Traffic: Why we drive the way we do"
+      },
+      {
+        "author": "Stephen King",
+        "title": "Billy Summers"
       }
     ]
   },
@@ -30,7 +34,12 @@
       {
         "author":"Tom Vanderbilt",
         "title": "Traffic: Why we drive the way we do"
+      },
+      {
+        "author": "Robert Gailbraith",
+        "title": "Paper White"
       }
+
     ]
   }
 ]

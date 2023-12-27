@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"os"
+	"sort"
 )
 
 // A Bookworm contains a list of books on a person's (bookworm's) shelf
@@ -35,6 +36,7 @@ func loadBookworms(filePath string) ([]Bookworm, error) {
 	return bookworms, nil
 }
 
+// find books that match
 func findCommonBooks(bookworms []Bookworm) []Book {
 	booksOnShelves := booksCount(bookworms)
 	var commonBooks []Book
@@ -43,9 +45,10 @@ func findCommonBooks(bookworms []Bookworm) []Book {
 			commonBooks = append(commonBooks, book)
 		}
 	}
-	return commonBooks
+	return sortBooks(commonBooks)
 }
 
+// count instances of books
 func booksCount(bookworms []Bookworm) map[Book]uint {
 	count := make(map[Book]uint)
 
@@ -55,4 +58,15 @@ func booksCount(bookworms []Bookworm) map[Book]uint {
 		}
 	}
 	return count
+}
+
+// sort books by author, then title
+func sortBooks(books []Book) []Book {
+	sort.Slice(books, func(i, j int) bool {
+		if books[i].Author != books[j].Author {
+			return books[i].Author < books[j].Author
+		}
+		return books[i].Title < books[j].Title
+	})
+	return books
 }
