@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"hollowmatt.com/algorithms/binary"
+	"hollowmatt.com/algorithms/recursion"
 	"hollowmatt.com/algorithms/selection"
 )
 
@@ -18,4 +19,9 @@ func main() {
 	unsorted := []int{5, 7, 3, 2, 4, 1, 6, 8, 7, 9}
 	fmt.Println(selection.SelectionSort(unsorted))
 	fmt.Println("================================")
+
+	// Chapter 3: An aside for recursion
+	recursion.Recurse(10)
+	fmt.Println("================================")
+
 }
