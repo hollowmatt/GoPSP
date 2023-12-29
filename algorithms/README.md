@@ -8,9 +8,9 @@ This algorithm is in /binary/binary.go
 The second chapter is about selection sort.  
 This algorithm is in /selection/selection.go
 
-## Chapter 3: Recursion
+## Chapter 3: Recursion (not an Algorithm)
 The third chapter is about recursion.  
-This algorithm is in /recursion/recursion.go
+This code is in /recursion/recursion.go
 
 ## Chapter 4: Quick Sort
 The fourth chapter is about quick sort.  

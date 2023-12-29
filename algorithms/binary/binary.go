@@ -2,7 +2,12 @@ package binary
 
 import "fmt"
 
+// Big O for this is O(Log n)
+// Logarthimic time based on number of entries in array
+
 func BinarySearch(arr []int, target int) int {
+	fmt.Println("--------------------------------")
+	fmt.Println("Binary Search")
 	fmt.Println("Target is: ", target)
 	fmt.Println("Array is: ", arr)
 	fmt.Println("--------------------------------")
