@@ -21,4 +21,31 @@ func main() {
 	fmt.Println("=========================")
 
 	fmt.Println(fact(7))
+
+	fmt.Println("=========================")
+	i := 1
+	fmt.Println("initial:", i)
+	zeroval(i)
+	fmt.Println("zeroval:", i)
+	zeroptr(&i)
+	fmt.Println("zeroptr:", i)
+
+	fmt.Println("pointer:", &i)
+	fmt.Println("=========================")
+
+	fmt.Println("+++++++++++++++++++++++++++")
+	fmt.Println(person{"John", 20})
+	fmt.Println(&person{name: "Ann", age: 40})
+	fmt.Println(person{name: "Bob"})
+	fmt.Println(newPerson("Catnip"))
+
+	dog := struct {
+		name   string
+		isGood bool
+	}{
+		name:   "Rex",
+		isGood: true,
+	}
+	fmt.Println(dog)
+
 }
