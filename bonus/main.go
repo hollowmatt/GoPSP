@@ -58,4 +58,7 @@ func main() {
 	c := circle{radius: 5}
 	measure(q)
 	measure(c)
+
+	fmt.Println("==================================")
+	create()
 }

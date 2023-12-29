@@ -1,3 +1,5 @@
+// https://gobyexample.com/interfaces
+
 package main
 
 import (
