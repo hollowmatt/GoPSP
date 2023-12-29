@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"hollowmatt.com/algorithms/binary"
+	"hollowmatt.com/algorithms/quicksort"
 	"hollowmatt.com/algorithms/recursion"
 	"hollowmatt.com/algorithms/selection"
 )
@@ -24,4 +25,6 @@ func main() {
 	recursion.Recurse(10)
 	fmt.Println("================================")
 
+	// Ch 4 - Algorithm 3: Quicksort
+	fmt.Println(quicksort.Qsort(unsorted))
 }
