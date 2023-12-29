@@ -9,7 +9,7 @@ func main() {
 	mapper()
 	stringly()
 	fmt.Println(plus(1, 3))
-	a, b := math("add", 1, 2)
+	a, b := calculator("add", 1, 2)
 	fmt.Println(a, b)
 	sum(1, 2, 3, 4, 5)
 	fmt.Println("=========================")
@@ -47,5 +47,15 @@ func main() {
 		isGood: true,
 	}
 	fmt.Println(dog)
+	fmt.Println("+++++++++++++++++++++++++++")
 
+	r := rect{width: 10, height: 5}
+	fmt.Println("Area of rectangle is: ", r.area())
+	fmt.Println("Permieter of rectangle is: ", r.perim())
+
+	fmt.Println("=========================")
+	q := rectangle{width: 3, height: 4}
+	c := circle{radius: 5}
+	measure(q)
+	measure(c)
 }

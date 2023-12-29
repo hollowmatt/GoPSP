@@ -6,7 +6,7 @@ func plus(a, b int) int {
 }
 
 // takes in 3 vars, returns 2 values
-func math(operation string, a, b int) (int, string) {
+func calculator(operation string, a, b int) (int, string) {
 	switch operation {
 	case "add":
 		return (a + b), operation
