@@ -17,8 +17,12 @@ func main() {
 	fmt.Println("================================")
 
 	// Algorithm 2: Selection Sort O(n2)
-	unsorted := []int{5, 7, 3, 2, 4, 1, 6, 8, 7, 9}
-	fmt.Println(selection.SelectionSort(unsorted))
+	//unsorted := []int{5, 7, 3, 2, 4, 1, 6, 8, 7, 9}
+	unsorted := []int{2, 1, 3}
+	results := []int{}
+	var steps int
+	results, steps = selection.SelectionSort(unsorted)
+	fmt.Println("results: ", results, ", Steps: ", steps)
 	fmt.Println("================================")
 
 	// Chapter 3: An aside for recursion
@@ -26,5 +30,6 @@ func main() {
 	fmt.Println("================================")
 
 	// Ch 4 - Algorithm 3: Quicksort
+	fmt.Println(recursion.Plots(1680, 640))
 	fmt.Println(quicksort.Qsort(unsorted))
 }
