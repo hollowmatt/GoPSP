@@ -2,8 +2,8 @@ package quicksort
 
 import "fmt"
 
-// Big O for this is O(___)
-// ___ time based on number of entries in array
+// Big O for this is O(n log n)
+// linear plus log time based on number of entries in array
 func Qsort(arr []int) ([]int, int) {
 	steps := 0
 	fmt.Println("--------------------------------")
