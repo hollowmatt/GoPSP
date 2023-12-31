@@ -18,11 +18,11 @@ func main() {
 
 	// Algorithm 2: Selection Sort O(n2)
 	//unsorted := []int{5, 7, 3, 2, 4, 1, 6, 8, 7, 9}
-	unsorted := []int{2, 1, 3}
+	unsorted := []int{33, 10, 15, 7, 5, 1, 17, 56, 98, 3, 88, 4, 18, 91, 12}
 	results := []int{}
 	var steps int
 	results, steps = selection.SelectionSort(unsorted)
-	fmt.Println("results: ", results, ", Steps: ", steps)
+	fmt.Println("results: ", results, " in ", steps, " steps")
 	fmt.Println("================================")
 
 	// Chapter 3: An aside for recursion
@@ -30,6 +30,10 @@ func main() {
 	fmt.Println("================================")
 
 	// Ch 4 - Algorithm 3: Quicksort
-	fmt.Println(recursion.Plots(1680, 640))
-	fmt.Println(quicksort.Qsort(unsorted))
+	fmt.Println("largest equal square plots of 1680x640 is: ", recursion.Plots(1680, 640))
+	qlist := []int{33, 10, 15, 7, 5, 1, 17, 56, 98, 3, 88, 4, 18, 91, 12}
+	sorted := []int{}
+	sorted, steps = quicksort.Qsort(qlist)
+
+	fmt.Println("results: ", sorted, " in ", steps, " steps")
 }
