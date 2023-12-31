@@ -26,3 +26,6 @@ var m map[string]int  //define a map, with a key of string, value of int
 m = make(map[string]int)  //this will initialize a map in Go
 m["route"] = 66
 ```
+
+## Chapter 6: Breadth-first Search
+The sixth chapter traverses a graph using breadth-first to find a result
