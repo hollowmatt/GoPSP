@@ -28,4 +28,6 @@ m["route"] = 66
 ```
 
 ## Chapter 6: Breadth-first Search
-The sixth chapter traverses a graph using breadth-first to find a result
+The sixth chapter traverses a graph using breadth-first to find a result, it uses 
+graphs or trees as the underlying data structure.
+This algorithm is in /breadth/bfirst.go
