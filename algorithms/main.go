@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 
+	"hollowmatt.com/algorithms/breadth"
+
 	"hollowmatt.com/algorithms/binary"
 	"hollowmatt.com/algorithms/quicksort"
 	"hollowmatt.com/algorithms/recursion"
@@ -34,6 +36,19 @@ func main() {
 	qlist := []int{33, 10, 15, 7, 5, 1, 17, 56, 98, 3, 88, 4, 18, 91, 12}
 	sorted := []int{}
 	sorted, steps = quicksort.Qsort(qlist)
-
 	fmt.Println("results: ", sorted, " in ", steps, " steps")
+	fmt.Println("================================")
+
+	//Ch 6 - Algorithm 4: Breadth First Search (with Graph)
+	graph := map[int][]string{
+		88: {"17th", "21st", "28th", "Negly", "Target", "Traders", "Bakery"},
+		86: {"17th", "40th", "Bigelow", "Target", "Bakery"},
+	}
+	stops, route := breadth.Breadthfirst("Bakery", graph)
+	if stops == 0 && route == 0 {
+		fmt.Println("No route found")
+	} else {
+		fmt.Println("Least number of stops to Bakery Sq is ", stops, " on route ", route)
+	}
+	fmt.Println("================================")
 }
