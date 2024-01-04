@@ -33,4 +33,9 @@ func main() {
 	for _, appt := range moreAppts {
 		fmt.Println("Start time: ", appt.Start, ", End Time: ", appt.End, ", conflict: ", appt.HasConflict)
 	}
+	fmt.Println("=====================")
+	appointment.NewApptWithCheck(moreAppts, 145, 150)
+	for _, appt := range moreAppts {
+		fmt.Println("Start time: ", appt.Start, ", End Time: ", appt.End, ", conflict: ", appt.HasConflict)
+	}
 }

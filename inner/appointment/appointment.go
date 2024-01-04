@@ -19,6 +19,18 @@ func NewAppointment(start time.Time, end time.Time) (*Appointment, error) {
 	return &Appointment{Start: start, End: end}, nil
 }
 
+func NewApptWithCheck(appointments []*Appointment, start int64, end int64) {
+	latest := appointments[len(appointments)-1]
+	appt, _ := NewAppointment(time.Unix(start, 0), time.Unix(end, 0))
+	if appt.Start.Before(latest.End) {
+		fmt.Println("conflict, not added")
+	} else {
+		appointments = append(appointments, appt)
+	}
+	fmt.Println("Start time: ", appt.Start, ", End Time: ", appt.End, ", conflict: ", appt.HasConflict)
+
+}
+
 // func (a *Appointment) Equals(b *Appointment) bool {
 // 	return a.Start == b.Start && a.End == b.End
 // }
