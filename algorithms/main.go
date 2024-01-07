@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"hollowmatt.com/algorithms/breadth"
 
@@ -51,4 +52,10 @@ func main() {
 		fmt.Println("Least number of stops to Bakery Sq is ", stops, " on route ", route)
 	}
 	fmt.Println("================================")
+
+	// concurrency
+
+	fmt.Println("time is: ", time.Now())
+	time.Sleep(time.Duration(3) * time.Second)
+	fmt.Println("now time is: ", time.Now())
 }
