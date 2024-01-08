@@ -7,10 +7,10 @@ type Reader struct {
 }
 
 // A given book
-type Book struct {
-	Author string `json:"author"`
-	Title  string `json:"title"`
-}
+// type Book struct {
+// 	Author string `json:"author"`
+// 	Title  string `json:"title"`
+// }
 
 // Recommendation with confidence score
 type Recommendation struct {
@@ -19,5 +19,5 @@ type Recommendation struct {
 }
 
 func recommend(allReaders []Reader, target Reader, n int) []Recommendation {
-
+	return nil
 }
