@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 	"sort"
 )
@@ -69,4 +70,10 @@ func sortBooks(books []Book) []Book {
 		return books[i].Title < books[j].Title
 	})
 	return books
+}
+
+func displayBooks(books []Book) {
+	for _, book := range books {
+		fmt.Println("-", book.Title, " by ", book.Author)
+	}
 }
