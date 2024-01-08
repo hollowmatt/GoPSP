@@ -10,10 +10,10 @@ func main() {
 	if err != nil {
 		_, _ = fmt.Fprintf(os.Stderr, "failed to load bookworms: %s\n", err)
 	}
-	// fmt.Println(bookworms)
+	fmt.Println(bookworms)
 
-	// books := booksCount(bookworms)
-	// fmt.Println(books)
+	books := booksCount(bookworms)
+	fmt.Println(books)
 
 	common := findCommonBooks(bookworms)
 	for _, book := range common {

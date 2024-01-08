@@ -9,6 +9,7 @@ var (
 	paperWhite    = Book{Author: "Robert Gailbraith", Title: "Paper White"}
 	soul          = Book{Author: "Tracy Kidder", Title: "Soul of the new Machine"}
 	traffic       = Book{Author: "Tom Vanderbilt", Title: "Traffic: Why we drive the way we do"}
+	billy         = Book{Author: "Stephen King", Title: "Billy Summers"}
 )
 
 func TestLoadBookworms(t *testing.T) {
@@ -22,8 +23,8 @@ func TestLoadBookworms(t *testing.T) {
 		"file exists": {
 			bookwormsFile: "testdata/bookworms.json",
 			want: []Bookworm{
-				{Name: "Sheila", Books: []Book{jetBlackHeart, paperWhite, traffic}},
-				{Name: "Matt", Books: []Book{soul, jetBlackHeart, traffic}},
+				{Name: "Sheila", Books: []Book{jetBlackHeart, paperWhite, traffic, billy}},
+				{Name: "Matt", Books: []Book{soul, jetBlackHeart, traffic, paperWhite}},
 			},
 			wantErr: false,
 		},
