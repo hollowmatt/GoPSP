@@ -22,29 +22,41 @@ func (l *Logger) Debugf(format string, args ...any) {
 	if l.threshold > LevelDebug {
 		return
 	}
-	fmt.Printf("debug:: "+format+"\n", args...)
+	fmt.Printf(format+"\n", args...)
 }
 
 // Infof formats and prints a message if log level is debug or higher.
 func (l *Logger) InfoF(format string, args ...any) {
 	//implementation
-	fmt.Println(format)
+	if l.threshold > LevelDebug {
+		return
+	}
+	fmt.Printf(format+"\n", args...)
 }
 
 // Warningf formats and prints a message if log level is debug or higher.
 func (l *Logger) Warningf(format string, args ...any) {
 	//implementation
-	fmt.Println(format)
+	if l.threshold > LevelDebug {
+		return
+	}
+	fmt.Printf(format+"\n", args...)
 }
 
 // Errorf formats and prints a message if log level is debug or higher.
 func (l *Logger) Errorf(format string, args ...any) {
 	//implementation
-	fmt.Println(format)
+	if l.threshold > LevelDebug {
+		return
+	}
+	fmt.Printf(format+"\n", args...)
 }
 
 // Fatalf formats and prints a message if log level is debug or higher.
 func (l *Logger) Fatalf(format string, args ...any) {
 	//implementation
-	fmt.Println(format)
+	if l.threshold > LevelDebug {
+		return
+	}
+	fmt.Printf(format+"\n", args...)
 }
