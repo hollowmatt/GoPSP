@@ -9,6 +9,7 @@ type Logger struct {
 	threshold Level
 }
 
+// New returns a pointer to a new logger, so it can be easily shared.
 func New(threshold Level) *Logger {
 	return &Logger{
 		threshold: threshold,
@@ -18,7 +19,10 @@ func New(threshold Level) *Logger {
 // Debugf formats and prints a message if log level is debug or higher.
 func (l *Logger) Debugf(format string, args ...any) {
 	//implementation
-	fmt.Println(format)
+	if l.threshold > LevelDebug {
+		return
+	}
+	fmt.Printf("debug:: "+format+"\n", args...)
 }
 
 // Infof formats and prints a message if log level is debug or higher.
