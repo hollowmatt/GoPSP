@@ -13,15 +13,14 @@ type Logger struct {
 
 // Returns a pointer to a new logger, at the requested threshold level
 // Default output is Stdout
-func New(threshold Level, output io.Writer) *Logger {
-	if output == nil {
-		output = os.Stdout
+func New(threshold Level, opts ...Option) *Logger {
+	lgr := &Logger{threshold: threshold, output: os.Stdout}
+
+	for _, configFunc := range opts {
+		configFunc(lgr)
 	}
 
-	return &Logger{
-		threshold: threshold,
-		output:    output,
-	}
+	return lgr
 }
 
 func (l *Logger) Debugf(format string, args ...any) {
