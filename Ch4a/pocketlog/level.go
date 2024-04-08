@@ -8,6 +8,8 @@ const (
 	LevelDebug Level = iota
 	// LevelInfo represents a level where information is passed out, along with errors (think of QA)
 	LevelInfo Level
+	// LevelWarn indicates a warning
+	LevelWarn Level
 	// LevelError represents errors in the system, but not fatal (error occurs, system continues)
 	LevelError Level
 	// LevelFatal represents something fatal occuring in the system, causing the system to stop
