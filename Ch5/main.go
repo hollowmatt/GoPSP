@@ -2,9 +2,10 @@ package main
 
 import (
 	"hollowmatt/gordle/gordle"
+	"os"
 )
 
 func main() {
-	g := gordle.New()
+	g := gordle.New(os.Stdin)
 	g.Play()
 }
