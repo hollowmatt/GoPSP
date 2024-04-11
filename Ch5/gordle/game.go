@@ -7,7 +7,11 @@ import (
 	"os"
 )
 
+// declare a constant for the length of the solution
 const solutionLength = 5
+
+// declare a new error type "errInvalidWordLength"
+var errInvalidWordLength = fmt.Errorf("Invalid guess, word doesn't have the proper number of charcters")
 
 type Game struct {
 	reader *bufio.Reader
@@ -39,10 +43,19 @@ func (g *Game) ask() []rune {
 
 		guess := []rune(string(playerInput))
 
-		if len(guess) != solutionLength {
-			_, _ = fmt.Fprintf(os.Stderr, "Your attempt is invalid with Gordle's solution.  Expected %d characters, got %d.\n", solutionLength, len(guess))
+		err = g.validateGuess(guess)
+
+		if err != nil {
+			_, _ = fmt.Fprintf(os.Stderr, "Your attempt is invalid with Gordle's solution: %s. \n", err.Error())
 		} else {
 			return guess
 		}
 	}
+}
+
+func (g *Game) validateGuess(guess []rune) error {
+	if len(guess) != solutionLength {
+		return fmt.Errorf("%s - expected %d, got %d", errInvalidWordLength, solutionLength, len(guess))
+	}
+	return nil
 }
