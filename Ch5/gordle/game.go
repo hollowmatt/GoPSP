@@ -42,7 +42,7 @@ func (g *Game) ask() []rune {
 			continue
 		}
 
-		guess := []rune(string(playerInput))
+		guess := splitToUpperCaseChars(string(playerInput))
 
 		err = g.validateGuess(guess)
 
