@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strings"
 )
 
 // declare a constant for the length of the solution
@@ -58,4 +59,9 @@ func (g *Game) validateGuess(guess []rune) error {
 		return errInvalidWordLength
 	}
 	return nil
+}
+
+// split string into individual characters
+func splitToUpperCaseChars(input string) []rune {
+	return []rune(strings.ToUpper(input))
 }
