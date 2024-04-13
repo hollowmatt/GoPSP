@@ -5,7 +5,10 @@ import (
 	"os"
 )
 
+const maxAttempts = 6
+
 func main() {
-	g := gordle.New(os.Stdin)
+	solution := "shake"
+	g := gordle.New(os.Stdin, solution, maxAttempts)
 	g.Play()
 }

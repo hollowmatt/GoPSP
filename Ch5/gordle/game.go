@@ -5,11 +5,9 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"slices"
 	"strings"
 )
-
-// declare a constant for the length of the solution
-const solutionLength = 5
 
 // declare a new error type "errInvalidWordLength"
 var errInvalidWordLength = fmt.Errorf("invalid guess, word doesn't have the proper number of charcters")
@@ -32,13 +30,19 @@ func New(playerInput io.Reader, solution string, maxAttempts int) *Game {
 
 func (g *Game) Play() {
 	fmt.Println("Welcome to Gordle")
-	fmt.Printf("Enter a Guess: \n")
-	guess := g.ask()
-	fmt.Printf("Your guess is: %s\n", string(guess))
+
+	for currentAttempt := 1; currentAttempt <= g.maxAttempts; currentAttempt++ {
+		guess := g.ask()
+		if slices.Equal(guess, g.solution) {
+			fmt.Printf("🎉You won!  You found it in %d guess(es)!  The word was: %s.\n", currentAttempt, string(g.solution))
+			return
+		}
+	}
+	fmt.Printf("💩You lose!  The solution was: %s.  Better luck next time!\n", string(g.solution))
 }
 
 func (g *Game) ask() []rune {
-	fmt.Printf("Enter a %d-character guess:\n", solutionLength)
+	fmt.Printf("Enter a %d-character guess:\n", len(g.solution))
 
 	for {
 		playerInput, _, err := g.reader.ReadLine()
@@ -52,7 +56,7 @@ func (g *Game) ask() []rune {
 		err = g.validateGuess(guess)
 
 		if err != nil {
-			_, _ = fmt.Fprintf(os.Stderr, "Your attempt is invalid with Gordle's solution: %s. Expected %d, got %d \n", err.Error(), solutionLength, len(guess))
+			_, _ = fmt.Fprintf(os.Stderr, "Your attempt is invalid with Gordle's solution: %s. Expected %d, got %d \n", err.Error(), len(g.solution), len(guess))
 		} else {
 			return guess
 		}
@@ -60,7 +64,7 @@ func (g *Game) ask() []rune {
 }
 
 func (g *Game) validateGuess(guess []rune) error {
-	if len(guess) != solutionLength {
+	if len(guess) != len(g.solution) {
 		return errInvalidWordLength
 	}
 	return nil
