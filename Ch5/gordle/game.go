@@ -21,9 +21,11 @@ type Game struct {
 	maxAttempts int
 }
 
-func New(playerInput io.Reader) *Game {
+func New(playerInput io.Reader, solution string, maxAttempts int) *Game {
 	g := &Game{
-		reader: bufio.NewReader(playerInput),
+		reader:      bufio.NewReader(playerInput),
+		solution:    splitToUpperCaseChars(solution),
+		maxAttempts: maxAttempts,
 	}
 	return g
 }
