@@ -14,8 +14,11 @@ const solutionLength = 5
 // declare a new error type "errInvalidWordLength"
 var errInvalidWordLength = fmt.Errorf("invalid guess, word doesn't have the proper number of charcters")
 
+// Game holds all the information needed to play Gordle
 type Game struct {
-	reader *bufio.Reader
+	reader      *bufio.Reader
+	solution    []rune
+	maxAttempts int
 }
 
 func New(playerInput io.Reader) *Game {
