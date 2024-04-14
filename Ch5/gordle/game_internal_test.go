@@ -59,3 +59,35 @@ func TestGameValidateGuess(t *testing.T) {
 		})
 	}
 }
+
+func TestComputeFeedback(t *testing.T) {
+	tt := map[string]struct {
+		guess            string
+		solution         string
+		expectedFeedback feedback
+	}{
+		"nominal": {
+			guess:            "shake",
+			solution:         "shake",
+			expectedFeedback: feedback{correctPosition, correctPosition, correctPosition, correctPosition, correctPosition},
+		},
+		"double letter": {
+			guess:            "small",
+			solution:         "hello",
+			expectedFeedback: feedback{absentCharacter, absentCharacter, absentCharacter, correctPosition, wrongPostion},
+		},
+		"right but wrong position": {
+			guess:            "hlelo",
+			solution:         "hello",
+			expectedFeedback: feedback{correctPosition, wrongPostion, wrongPostion, correctPosition, correctPosition},
+		},
+	}
+	for name, tc := range tt {
+		t.Run(name, func(t *testing.T) {
+			fb := computeFeedback([]rune(tc.guess), []rune(tc.solution))
+			if !tc.expectedFeedback.Equal(fb) {
+				t.Errorf("guess: %q, got the wrong feedback, expected %v, got %v", tc.guess, tc.expectedFeedback, fb)
+			}
+		})
+	}
+}
