@@ -74,3 +74,44 @@ func (g *Game) validateGuess(guess []rune) error {
 func splitToUpperCaseChars(input string) []rune {
 	return []rune(strings.ToUpper(input))
 }
+
+func computeFeedback(guess, solution []rune) feedback {
+	//initialize holders
+	result := make(feedback, len(guess))
+	used := make([]bool, len(solution))
+
+	if len(guess) != len(solution) {
+		_, _ = fmt.Fprintf(os.Stderr, "Error: guess and solution are different lengths.  Guess must be %d characters", len(solution))
+	}
+
+	// check for correct letters
+	for posInGuess, character := range guess {
+		if character == solution[posInGuess] {
+			result[posInGuess] = correctPosition
+			used[posInGuess] = true
+		}
+	}
+
+	// check for correct letters in incorrect positions
+	for posInGuess, character := range guess {
+		if result[posInGuess] != absentCharacter {
+			// already been processed
+			continue
+		}
+
+		for posInSolution, target := range solution {
+			if used[posInSolution] {
+				// already been processed
+				continue
+			}
+
+			if character == target {
+				result[posInGuess] = wrongPostion
+				used[posInSolution] = true
+				break
+			}
+
+		}
+	}
+	return result
+}
