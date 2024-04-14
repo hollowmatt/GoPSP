@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"golang.org/x/exp/rand"
 )
 
 const ErrCorpusEmpty = corpusError("corpus is empty")
@@ -21,4 +23,9 @@ func ReadCorpus(path string) ([]string, error) {
 
 	words := strings.Fields(string(data))
 	return words, nil
+}
+
+func pickWord(corpus []string) string {
+	index := rand.Intn(len(corpus))
+	return corpus[index]
 }
