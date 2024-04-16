@@ -23,7 +23,7 @@ const (
 
 // convert a string into decimal representation
 func ParseDecimal(value string) (Decimal, error) {
-	intPart, fracPart := strings.Cut(value, ".")
+	intPart, fracPart, _ := strings.Cut(value, ".")
 	const maxDecimal = 12 // max num digits in a thousand billion
 
 	if len(intPart) > maxDecimal {
