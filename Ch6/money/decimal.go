@@ -1,5 +1,11 @@
 package money
 
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
+
 type Decimal struct {
 	// subunits is the amount of subunits.  Multiply it by the precision to get the real value
 	subunits int64
@@ -7,9 +13,29 @@ type Decimal struct {
 	precision byte
 }
 
-ParseDecimal(string) (Decimal, error) {
-	// 1 - find the position of the . and split on it. 
-	// 2 - convert the string without the . to an integer. This could fail
-	// 3 - add some consistency check
-	// 4 - return the result
+const (
+	//ErrInvalidDecimal - returned if decimal is malformed
+	ErrInvalidDecimal = Error("unable to convert the decimal")
+
+	//ErrTooLarge - returned if quantity is too large
+	ErrTooLarge = Error("quantity over 10^12 is too large")
+)
+
+// convert a string into decimal representation
+func ParseDecimal(value string) (Decimal, error) {
+	intPart, fracPart := strings.Cut(value, ".")
+	const maxDecimal = 12 // max num digits in a thousand billion
+
+	if len(intPart) > maxDecimal {
+		return Decimal{}, ErrTooLarge
+	}
+
+	cents, err := strconv.ParseInt(intPart+fracPart, 10, 64)
+	if err != nil {
+		return Decimal{}, fmt.Errorf("%w: %s", ErrInvalidDecimal, err.Error())
+	}
+
+	precision := byte(len(fracPart))
+
+	return Decimal{subunits: cents, precision: precision}, nil
 }
