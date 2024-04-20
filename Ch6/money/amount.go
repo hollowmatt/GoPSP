@@ -16,3 +16,13 @@ func NewAmount(quantity Decimal, currency Currency) (Amount, error) {
 	quantity.precision = currency.precision
 	return Amount{quantity: quantity, currency: currency}, nil
 }
+
+func (a Amount) validate() error {
+	switch {
+	case: a.number.intgerPart > maxAmount:
+		return ErrTooLarge
+	case: a.number.precision > a.currency.precision:
+		return ErrTooPrecise
+	}
+	return nil
+}

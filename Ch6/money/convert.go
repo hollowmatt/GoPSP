@@ -18,7 +18,7 @@ func Convert(amount Amount, to Currency) (Amount, error) {
 }
 
 func applyExchangeRate(amnt Amount, target Currency, rate ExchangeRate) (Amount, error) {
-	converted, err := multiply(a.quantity, rate)
+	converted, err := multiply(amnt.quantity, rate)
 	if err != nil {
 		return Amount{}, err
 	}
