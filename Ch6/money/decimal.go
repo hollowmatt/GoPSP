@@ -20,6 +20,9 @@ const (
 
 	//ErrTooLarge - returned if quantity is too large
 	ErrTooLarge = Error("quantity over 10^12 is too large")
+
+	// a thousand billion (see above error)
+	maxDecimal = 1e12
 )
 
 // convert a string into decimal representation
@@ -51,7 +54,7 @@ func (d *Decimal) simplify() {
 	}
 }
 
-func pow10(power int) int {
+func pow10(power byte) int64 {
 	switch power {
 	case 0:
 		return 1
@@ -62,6 +65,6 @@ func pow10(power int) int {
 	case 3:
 		return 1000
 	default:
-		return int(math.Pow(10, float64(power)))
+		return int64(math.Pow(10, float64(power)))
 	}
 }

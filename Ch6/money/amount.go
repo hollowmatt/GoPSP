@@ -19,9 +19,9 @@ func NewAmount(quantity Decimal, currency Currency) (Amount, error) {
 
 func (a Amount) validate() error {
 	switch {
-	case: a.number.intgerPart > maxAmount:
+	case a.quantity.subunits > maxDecimal:
 		return ErrTooLarge
-	case: a.number.precision > a.currency.precision:
+	case a.quantity.precision > a.currency.precision:
 		return ErrTooPrecise
 	}
 	return nil
