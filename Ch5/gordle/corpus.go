@@ -2,10 +2,9 @@ package gordle
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
 	"strings"
-
-	"golang.org/x/exp/rand"
 )
 
 const ErrCorpusEmpty = corpusError("corpus is empty")
@@ -26,6 +25,8 @@ func ReadCorpus(path string) ([]string, error) {
 }
 
 func pickWord(corpus []string) string {
+	// rand.Seed(time.Now().UnixNano())
 	index := rand.Intn(len(corpus))
+	fmt.Println(index, len(corpus))
 	return corpus[index]
 }
